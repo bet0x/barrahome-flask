@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>BarraHome.org :~#</title>
+    <meta name="description" content="Alberto Ferrer's Personal Blog">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/barrahome/terminal.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/barrahome/animate.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/barrahome/console.css') }}" />
+</head>
+
+<body class="terminal">
+    <div class="container">
+        <div class="terminal-nav terminal-nav-sticky">
+            <header class="terminal-logo">
+                <div class="logo terminal-prompt"><a href="/" class="no-style site-name">BarraHome.org</a>:~#</div>
+            </header>
+            <nav class="terminal-menu">
+                <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                    <li><a href="{{ url_for('index') }}" typeof="ListItem">Inicio</a>/</li>
+                    <li><a href="{{ url_for('projects') }}" typeof="ListItem">Proyectos</a>/</li>
+                    <li><a href="{{ url_for('contact') }}" typeof="ListItem">Contacto</a>/</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container">
+        {% block content %}{% endblock %}
+        <div class="footer">
+            Powered by <a href="{{ url_for('projects') }}">Random Copy Pasted Code</a> - © Alberto Ferrer - 2002 - {{ now.year }} - <a href="{{ url_for('credits') }}">Créditos</a> - <a href="{{ url_for('legal') }}">Legal</a>
+        </div>
+    </div>
+</body>
+
+</html>

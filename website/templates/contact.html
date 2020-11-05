@@ -1,0 +1,35 @@
+{% extends "layout.html" %} {% block content %}
+<section>
+    <header>
+        <h1>Sobre este blog:</h1>
+        Bienvenidos, mi nombre es Alberto Ferrer, este proyecto, sitio web y todas sus versiones nacieron con la necesidad de expresar ideas, comentarios, compartir enseñanzas y continuará a lo largo de los años siendo una fuente de conocimiento en constante evolución.
+    </header>
+
+    <section>
+      <h1>Curriculum Vitae (Hoja de Vida):</h1>
+        Si buscas de mis servicios o contratarme para algún proyecto, <a href="#" target="_new">aquí encontrarás</a> un enlace donde puedes descargar un PDF con toda la información necesaria.También puedes encontrar mi perfil en <a href="https://www.linkedin.com/in/bet0x/" target="_new">Linkedin</a> o mis proyectos en <a href="https://github.com/bet0x" target="_new">Github</a>.
+    </section>    
+
+    <h1>Escríbeme:</h1>
+    <form action="">
+      <fieldset>
+        <legend>Formulario</legend>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input id="email" name="email" type="email" required="" minlength="5" placeholder="Tu email">
+        </div>
+        <div class="form-group">
+          <label for="text">Nombre:</label>
+          <input id="text" name="text" type="text" required="" minlength="5" placeholder="Tu nombre">
+        </div>
+        <div class="form-group">
+          <label for="tarea">Comentario:</label>
+          <textarea id="tarea" cols="30" rows="5" name="message"></textarea>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-default" type="submit" role="button" name="submit" id="submit">Enviar</button>
+        </div>
+      </fieldset>
+    </form>
+</section>
+{% endblock %}

@@ -1,2 +1,1 @@
-# barrahome-flask
-BarraHome on Flask
+# BarraHome on Python + Flask

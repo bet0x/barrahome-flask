@@ -1,0 +1,28 @@
+{% extends "layout.html" %} {% block content %}
+<section>
+    <h1>Sobre este blog:</h1>
+    Bienvenidos, mi nombre es Alberto Ferrer, este proyecto, sitio web y todas sus versiones nacieron con la necesidad de expresar ideas, comentarios, compartir enseñanzas y continuará a lo largo de los años siendo una fuente de conocimiento en constante evolución.<a href="{{ url_for('contact') }}">(más)</a>
+
+    <h1>Etiquetas:</h1>
+    {% for tag in tag_dict %}
+        <a class="btn btn-default btn-ghost" href="/articles/tag/{{ tag }}">
+            {{ tag }}
+        </a>    
+    {% endfor %}
+
+    <h1>Últimas entradas:</h1>
+    <div class="posts-list">
+        {% for post in posts %}
+        <div class="post">
+            <p>
+                <div class="date">{{ post.date }}</div>
+                <h1>
+                    <a href="{{ post.href }}" title="{{ post.title }}">{{ post.title }}</a>
+                </h1>
+                {{ post.summary }}
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
