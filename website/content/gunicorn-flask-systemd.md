@@ -1,4 +1,4 @@
-title: Gunicorn , Flask y Systemd
+title: Gunicorn Flask y Systemd
 date: 2020-11-05
 tags: gunicorn, flask, systemd
 summary: Simple instalacion de Gunicorn utilizando Systemd
