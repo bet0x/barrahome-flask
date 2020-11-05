@@ -1,5 +1,5 @@
 website:
-    address: http://0.0.0.0:5000/
+    address: https://www.barrahome.org/
     author : Alberto Ferrer
     email  : alberto@barrahome.org
 
