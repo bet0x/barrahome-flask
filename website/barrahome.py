@@ -10,9 +10,11 @@ from pygments import highlight
 from pygments.formatters import html
 from pygments.lexers import get_lexer_by_name
 from flask import render_template, send_from_directory, make_response, Response, json
+from flask_minify import minify
 from wsgiref.handlers import format_date_time
 from website import app
 
+minify(app=app, passive=True)
 with open('config/website.yaml') as f:    
     data = yaml.load(f, Loader=yaml.FullLoader)
 
@@ -90,26 +92,31 @@ def sitemap():
     return response
 
 @app.route('/legal')
+@decorators.minify(html=True, js=True, cssless=True)
 @cache(expires=60)
 def legal():
     return render_template('legal.html')
 
 @app.route('/credits')
+@decorators.minify(html=True, js=True, cssless=True)
 @cache(expires=60)
 def credits():
     return render_template('credits.html')
 
 @app.route('/contact')
+@decorators.minify(html=True, js=True, cssless=True)
 @cache(expires=60)
 def contact():
     return render_template('contact.html')
 
 @app.route('/projects')
+@decorators.minify(html=True, js=True, cssless=True)
 @cache(expires=60)
 def projects():
     return render_template('projects.html')    
 
 @app.route('/')
+@decorators.minify(html=True, js=True, cssless=True)
 @cache(expires=None)
 def index():
     tag_dict = dict()
@@ -135,6 +142,7 @@ def index():
 
 
 @app.route('/articles/tag/<queried_tag>')
+@decorators.minify(html=True, js=True, cssless=True)
 @cache(expires=None)
 def get_tagged_posts(queried_tag):
     tag_dict = dict()
@@ -161,6 +169,7 @@ def get_tagged_posts(queried_tag):
 
 
 @app.route('/article/<post_title>')
+@decorators.minify(html=True, js=True, cssless=True)
 @cache(expires=None)
 def blog_post(post_title):
     try:
