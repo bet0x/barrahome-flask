@@ -1,4 +1,4 @@
-title: Notificacion de Login/Logout en conexiones SSH
+title: Notificacion de Login Logout en conexiones SSH
 date: 2010-01-14
 tags: bash, ssh, seguridad
 summary: Aunque se que no es muy seguro puesto puede ser borrado nos notificara antes que se realice tal evento.
