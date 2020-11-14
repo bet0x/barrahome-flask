@@ -8,7 +8,7 @@ author: Alberto Ferrer
 
 http://people.mozilla.org/~bsterne/content-security-policy/index.html
 
-```
+```php
 header("X-Content-Security-Policy: allow 'self'; frame-ancestors 'none'");
 header("X-XSS-Protection: '1'; mode='block'");
 ```
@@ -17,7 +17,7 @@ header("X-XSS-Protection: '1'; mode='block'");
 
 http://es.wikipedia.org/wiki/Clickjacking
 
-```
+```php
 header('X-Frame-Options: DENY');
 ```
 
@@ -25,7 +25,7 @@ header('X-Frame-Options: DENY');
 
 http://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx
 
-```
+```php
 header('X-Content-Type-Options: nosniff' );
 ```
 
