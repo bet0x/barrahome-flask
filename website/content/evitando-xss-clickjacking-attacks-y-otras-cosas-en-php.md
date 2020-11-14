@@ -1,4 +1,4 @@
-title: Evitando XSS, ClickJacking Attacks y otras cosas en PHP
+title: Evitando XSS ClickJacking Attacks y otras cosas en PHP
 date: 2012-12-04
 tags: php, seguridad
 summary: Buscando evitar XSS, ClickJacking me puse a mirar notas de seguridad para php y así mejorar mi blog mientras desarrollo mi proyecto sobre clusters en nginx aplique estos arreglos que mejoran la seguridad en mi wordpress y mis otros proyectos basados en php.
