@@ -6,7 +6,10 @@
     Etiquetas: {% for tag in post.tags %}
         <a href="/articles/tag/{{ tag }}">{{ tag }}</a> 
     {% endfor %}
-    <br/><br/>
+    <br/><br/>     
+    <h2>Sumario</h2>   
+        {{ post.summary|safe }} 
+    <br /><br />
         {{ post.content_html|safe }} 
 </section>    
 {% endblock %}
