@@ -27,7 +27,6 @@ class Post:
         self.content_md = content_md
         self.content_html = md_to_html(content_md)
 
-
 class HighlightRenderer(mistune.Renderer):
     def block_code(self, code, lang):
         if not lang:
@@ -69,6 +68,10 @@ def page_not_found(e):
 def internal_service_error(e):
     return render_template('500.html'), 500
 
+@app.route('/favicon.ico') 
+def favicon(): 
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
+    
 @app.route('/sitemap.xml')
 def sitemap():
     pages = []
