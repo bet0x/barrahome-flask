@@ -72,10 +72,10 @@ def internal_service_error(e):
 @app.route('/sitemap.xml')
 def sitemap():
     pages = []
-    pages.append("https://www.barrahome.org/projects", '2020-11-15'])
-    pages.append("https://www.barrahome.org/contact", '2020-11-15'])
-    pages.append("https://www.barrahome.org/credits", '2020-11-15'])
-    pages.append("https://www.barrahome.org/legal", '2020-11-15'])
+    pages.append("https://www.barrahome.org/projects", '2020-11-15')
+    pages.append("https://www.barrahome.org/contact", '2020-11-15')
+    pages.append("https://www.barrahome.org/credits", '2020-11-15')
+    pages.append("https://www.barrahome.org/legal", '2020-11-15')
     pages.append([data['website']['address'], '2020-11-15'])
     content_path = os.path.join(app.root_path, 'content')
     for file in os.listdir(content_path):
