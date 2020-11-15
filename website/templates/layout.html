@@ -2,10 +2,14 @@
 <html lang="es">
 <head>
     <meta charset="utf-8">
-    <title>BarraHome.org :~#</title>
-    <meta name="description" content="Alberto Ferrer's Personal Blog">
+    <title>{% if title %} {% block title %} {{ title }} - {% endblock %} {% endif %} BarraHome.org :~#</title>
+    {% if seo %}
+    <meta name="description" content="{% block seo %} {{ seo }} {% endblock %}">
+    {% else %}
+    <meta name="description" content="BarraHome.org :~#">
+    {% endif %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="all,follow">
+    <meta name="robots" content="index, follow"> 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/barrahome/terminal.min.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/barrahome/animate.min.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/barrahome/console.min.css') }}" />

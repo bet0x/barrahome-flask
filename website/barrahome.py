@@ -90,22 +90,22 @@ def sitemap():
 @app.route('/legal')
 @cache(expires=60)
 def legal():
-    return render_template('legal.html')
+    return render_template('legal.html', title="Legal")
 
 @app.route('/credits')
 @cache(expires=60)
 def credits():
-    return render_template('credits.html')
+    return render_template('credits.html', title="Creditos")
 
 @app.route('/contact')
 @cache(expires=60)
 def contact():
-    return render_template('contact.html')
+    return render_template('contact.html', title="Contacto")
 
 @app.route('/projects')
 @cache(expires=60)
 def projects():
-    return render_template('projects.html')    
+    return render_template('projects.html', title="Proyectos")    
 
 @app.route('/')
 @cache(expires=None)
@@ -129,7 +129,7 @@ def index():
     sorted_posts = sorted(posts, 
         key=lambda x: datetime.strptime(x.date, '%Y-%m-%d'), reverse=True)
     return render_template('articles.html', posts=sorted_posts,
-        tag_dict=sorted_tag_dict)
+        tag_dict=sorted_tag_dict, title="Bienvenidos")
 
 
 @app.route('/articles/tag/<queried_tag>')
@@ -155,7 +155,7 @@ def get_tagged_posts(queried_tag):
     sorted_posts = sorted(matching_posts,
         key=lambda x: datetime.strptime(x.date, '%Y-%m-%d'), reverse=True)
     return render_template('articles.html', posts=sorted_posts,
-        tag_dict=sorted_tag_dict, queried_tag=queried_tag)
+        tag_dict=sorted_tag_dict, queried_tag=queried_tag, title=queried_tag)
 
 
 @app.route('/article/<post_title>')
@@ -163,9 +163,8 @@ def get_tagged_posts(queried_tag):
 def blog_post(post_title):
     try:
         md_path  = os.path.join(app.root_path, 'content', '%s.md' % post_title)
-        print (md_path)
         post = parse_markdown_post(md_path)
-        return render_template('article.html', post=post)
+        return render_template('article.html', post=post, title=post.title, seo=post.title)
     except IOError:
         return render_template('404.html'), 404
 
