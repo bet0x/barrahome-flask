@@ -9,7 +9,7 @@ from datetime import datetime, date, timedelta
 from pygments import highlight
 from pygments.formatters import html
 from pygments.lexers import get_lexer_by_name
-from flask import render_template, send_from_directory, make_response, Response, json
+from flask import render_template, send_from_directory, make_response, Response, json, url_for
 from wsgiref.handlers import format_date_time
 from website import app
 
@@ -68,10 +68,10 @@ def page_not_found(e):
 def internal_service_error(e):
     return render_template('500.html'), 500
 
-@app.route('/favicon.ico') 
-def favicon(): 
-    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
-    
+@app.route('/favicon.ico')
+def favicon():
+    return redirect(url_for('static', filename='favicon.ico'))
+
 @app.route('/sitemap.xml')
 def sitemap():
     pages = []
