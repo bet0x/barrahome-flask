@@ -39,7 +39,7 @@ class HighlightRenderer(mistune.Renderer):
 @app.context_processor
 def inject_now():
     return {'now': datetime.utcnow()}
-    
+
 def cache(expires=None, round_to_minute=False):
     def cache_decorator(view):
         @wraps(view)
@@ -70,8 +70,7 @@ def internal_service_error(e):
 
 @app.route('/static/favicon.ico')
 def favicon():
-    return send_from_directory(os.path.join(app.root_path, 'static'),
-                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
+    return send_from_directory(os.path.join(app.root_path, 'static'),'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 @app.route('/sitemap.xml')
 def sitemap():
@@ -115,7 +114,7 @@ def projects():
     return render_template('projects.html', title="Proyectos")    
 
 @app.route('/')
-@cache(expires=None)
+@cache(expires=60)
 def index():
     tag_dict = dict()
     posts = []
