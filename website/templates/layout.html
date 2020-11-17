@@ -10,10 +10,10 @@
     {% endif %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="index, follow"> 
-    <link rel="shortcut icon" href="https://cdn.barrahome.org/favicon.ico">
-    <link rel="stylesheet" href="https://cdn.barrahome.org/css/barrahome/terminal.min.css" />
-    <link rel="stylesheet" href="https://cdn.barrahome.org/css/barrahome/animate.min.css" />
-    <link rel="stylesheet" href="https://cdn.barrahome.org/css/barrahome/console.min.css" />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/barrahome/terminal.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/barrahome/animate.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/barrahome/console.min.css') }}" />
 </head>
 
 <body class="terminal">
