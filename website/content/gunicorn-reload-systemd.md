@@ -4,7 +4,7 @@ tags: gunicorn, systemd
 summary: Recargar la configuración o cambios de Gunicorn mediante Systemd.
 author: Alberto Ferrer
 
-Se agregan estas las lineas **ExecReload** y **ExecStop** al "unit" de systemd creado para Gunicorn [https://www.barrahome.org/article/gunicorn-flask-systemd](leer):
+Se agregan estas las lineas **ExecReload** y **ExecStop** al "unit" de systemd creado para Gunicorn [leer](https://www.barrahome.org/article/gunicorn-flask-systemd):
 
 ```bash
 [alberto@barrahome barrahome-flask]$ cat /etc/systemd/system/barrahome.service
