@@ -117,7 +117,7 @@ def credits():
     return render_template('credits.html', title="Creditos")
 
 @app.route('/contact', methods=["GET","POST"])
-@cache(expires=60)
+@cache(expires=None)
 def contact():
     form = ContactForm()
     # here, if the request type is a POST we get the data on contact
