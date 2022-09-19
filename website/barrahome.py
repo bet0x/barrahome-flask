@@ -16,11 +16,14 @@ from wsgiref.handlers import format_date_time
 from website import app
 from flask_wtf import FlaskForm
 from wtforms import TextField, BooleanField, TextAreaField, SubmitField
+from flask_htmlmin import HTMLMIN
 
 with open('config/website.yaml') as f:    
     data = yaml.load(f, Loader=yaml.FullLoader)
 
 app.secret_key = 'secretKey'
+app.config['MINIFY_HTML'] = True
+htmlmin = HTMLMIN(app)
 
 class Post:
     def __init__(self, title, date, tags, summary, author, href, content_md):
@@ -73,18 +76,22 @@ def cache(expires=None, round_to_minute=False):
     return cache_decorator
 
 @app.errorhandler(404)
+@htmlmin.exempt
 def page_not_found(e):
     return render_template('404.html'), 404
 
 @app.errorhandler(500)
+@htmlmin.exempt
 def internal_service_error(e):
     return render_template('500.html'), 500
 
 @app.route('/static/favicon.ico')
+@htmlmin.exempt
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 @app.route('/sitemap.xml')
+@htmlmin.exempt
 def sitemap():
     pages = []
     pages.append([data['website']['address'], '2020-11-15'])    
@@ -106,16 +113,19 @@ def sitemap():
     return response
 
 @app.route('/legal')
+@htmlmin.exempt
 @cache(expires=60)
 def legal():
     return render_template('legal.html', title="Legal")
 
 @app.route('/credits')
+@htmlmin.exempt
 @cache(expires=60)
 def credits():
     return render_template('credits.html', title="Creditos")
 
 @app.route('/contact', methods=["GET","POST"])
+@htmlmin.exempt
 @cache(expires=None)
 def contact():
     form = ContactForm()
