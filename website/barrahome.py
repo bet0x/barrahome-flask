@@ -18,6 +18,8 @@ from wtforms import TextField, BooleanField, TextAreaField, SubmitField
 with open('config/website.yaml') as f:    
     data = yaml.load(f, Loader=yaml.FullLoader)
 
+app.secret_key = 'secretKey'
+
 class Post:
     def __init__(self, title, date, tags, summary, author, href, content_md):
         self.title = title
