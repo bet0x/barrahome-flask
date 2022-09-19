@@ -11,7 +11,7 @@
     </section>    
 
     <h1>Escríbeme:</h1>
-    <form action="">
+    <form action="{{ url_for('contact') }}" method=post>
       <fieldset>
         <legend>Formulario</legend>
         <div class="form-group">
@@ -20,7 +20,7 @@
         </div>
         <div class="form-group">
           <label for="text">Nombre:</label>
-          <input id="text" name="text" type="text" required="" minlength="5" placeholder="Tu nombre">
+          <input id="text" name="name" type="text" required="" minlength="5" placeholder="Tu nombre">
         </div>
         <div class="form-group">
           <label for="tarea">Comentario:</label>

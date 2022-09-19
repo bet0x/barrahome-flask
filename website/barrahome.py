@@ -12,6 +12,8 @@ from pygments.lexers import get_lexer_by_name
 from flask import render_template, send_from_directory, make_response, Response, json, url_for
 from wsgiref.handlers import format_date_time
 from website import app
+from flask_wtf import FlaskForm
+from wtforms import TextField, BooleanField, TextAreaField, SubmitField
 
 with open('config/website.yaml') as f:    
     data = yaml.load(f, Loader=yaml.FullLoader)
@@ -35,6 +37,12 @@ class HighlightRenderer(mistune.Renderer):
         lexer = get_lexer_by_name(lang, stripall=True)
         formatter = html.HtmlFormatter()
         return highlight(code, lexer, formatter)
+
+class ContactForm(FlaskForm):
+    email = TextField("Email")
+    name = TextField("Name")
+    message = TextAreaField("Message")
+    submit = SubmitField("Send")
 
 @app.context_processor
 def inject_now():
@@ -103,10 +111,21 @@ def legal():
 def credits():
     return render_template('credits.html', title="Creditos")
 
-@app.route('/contact')
+@app.route('/contact', methods=["GET","POST"])
 @cache(expires=60)
 def contact():
-    return render_template('contact.html', title="Contacto")
+    form = ContactForm()
+    # here, if the request type is a POST we get the data on contact
+    #forms and save them else we return the contact forms html page
+    if request.method == 'POST':
+        email = request.form["email"]
+        name =  request.form["name"]
+        message = request.form["message"]
+        res = pd.DataFrame({'email':email,'name':name,'message':message}, index=[0])
+        res.to_csv('./contact.csv')
+        print("The data are saved !")
+    else:
+        return render_template('contact.html', title="Contacto", form=form)
 
 @app.route('/projects')
 @cache(expires=60)
