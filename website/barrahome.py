@@ -127,7 +127,7 @@ def contact():
         name =  request.form["name"]
         message = request.form["message"]
         res = pd.DataFrame({'email':email,'name':name,'message':message}, index=[0])
-        res.to_csv('./contact.csv', mode='a')
+        res.to_csv('./contact.csv', mode='a', header=False)
         return render_template('contact.html', title="Contacto", form=form, resp="Solicitud de contacto enviada")
     else:
         return render_template('contact.html', title="Contacto", form=form)
