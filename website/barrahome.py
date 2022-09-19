@@ -17,7 +17,6 @@ from website import app
 from flask_wtf import FlaskForm
 from wtforms import TextField, BooleanField, TextAreaField, SubmitField
 
-
 with open('config/website.yaml') as f:    
     data = yaml.load(f, Loader=yaml.FullLoader)
 
