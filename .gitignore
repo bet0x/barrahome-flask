@@ -108,3 +108,7 @@ yarn*
 
 # Other
 tmp/
+
+#BarraHome
+*.csv
+*.pid
