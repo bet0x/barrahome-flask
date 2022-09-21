@@ -112,30 +112,6 @@ def sitemap():
     response.headers['Content-Type'] = 'application/xml'
     return response
 
-@app.route('/stream')
-@htmlmin.exempt
-@cache(None)
-def stream():
-    from shelljob import proc
-    import eventlet
-    eventlet.monkey_patch()
-    g = proc.Group()
-    p = g.run( [ "bash", "-c", "ps fax" ] )
-
-    def read_process():
-        while g.is_pending():   
-            lines = g.readlines()
-            for proc, line in lines:
-                yield "data:" + line + "\n\n"
-
-    return Response( read_process(), mimetype= 'text/event-stream' )
-
-@app.route('/tldr')
-@htmlmin.exempt
-@cache(None)
-def tldr():
-    return send_file('tldr.html')
-
 @app.route('/legal')
 @htmlmin.exempt
 @cache(expires=60)
