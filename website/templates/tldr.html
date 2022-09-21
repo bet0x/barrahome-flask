@@ -1,0 +1,35 @@
+{% extends "layout.html" %} {% block content %}
+<script>
+    var source = new EventSource("/stream");
+    source.onmessage = function(event) {
+        document.getElementById("output").innerHTML += event.data + "<br/>"
+    }
+</script>
+<section>
+    <header>
+        <h1>Too long; didn't read:</h1>
+        Pellentesque habitant morbi tristique senectus et netus et malesuada fames
+        ac turpis egestas. 
+        <br/><br/>
+    </header>
+    <h1>Output</h1>
+        <p>
+            <div id="output"></div>
+        </p>
+    <h2>Level 2 Heading</h2>
+        <p>
+        Pellentesque habitant morbi tristique senectus et netus et malesuada fames
+        ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
+        tempor sit amet, ante.
+        </p>
+    <h3>Level 3 Heading</h3>
+        <p>
+        Pellentesque habitant morbi tristique senectus et netus et malesuada fames
+        ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
+        tempor sit amet, ante.
+        </p>
+        <h4>Level 4 Heading</h4>
+        <h5>Level 5 Heading</h5>
+        <h6>Level 6 Heading</h6>    
+</section>
+{% endblock %}

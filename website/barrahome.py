@@ -11,12 +11,17 @@ from datetime import datetime, date, timedelta
 from pygments import highlight
 from pygments.formatters import html
 from pygments.lexers import get_lexer_by_name
-from flask import render_template, send_from_directory, make_response, Response, json, url_for, request
+from flask import render_template, send_from_directory, make_response, Response, json, url_for, request, send_file
 from wsgiref.handlers import format_date_time
 from website import app
 from flask_wtf import FlaskForm
 from wtforms import TextField, BooleanField, TextAreaField, SubmitField
 from flask_htmlmin import HTMLMIN
+
+from shelljob import proc
+
+import eventlet
+eventlet.monkey_patch()
 
 with open('config/website.yaml') as f:    
     data = yaml.load(f, Loader=yaml.FullLoader)
@@ -111,6 +116,27 @@ def sitemap():
     response= make_response(render_template("sitemap.xml", pages=pages))
     response.headers['Content-Type'] = 'application/xml'
     return response
+
+@app.route('/stream')
+@htmlmin.exempt
+@cache(None)
+def stream():
+    g = proc.Group()
+    p = g.run( [ "bash", "-c", "ps fax" ] )
+
+    def read_process():
+        while g.is_pending():   
+            lines = g.readlines()
+            for proc, line in lines:
+                yield "data:" + line + "\n\n"
+
+    return flask.Response( read_process(), mimetype= 'text/event-stream' )
+
+@app.route('/tldr')
+@htmlmin.exempt
+@cache(None)
+def tldr():
+    return send_file('tldr.html', title="Too long; didn't read")
 
 @app.route('/legal')
 @htmlmin.exempt
