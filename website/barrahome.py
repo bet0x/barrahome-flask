@@ -17,9 +17,6 @@ from website import app
 from flask_wtf import FlaskForm
 from wtforms import TextField, BooleanField, TextAreaField, SubmitField
 from flask_htmlmin import HTMLMIN
-from shelljob import proc
-import eventlet
-eventlet.monkey_patch()
 
 with open('config/website.yaml') as f:    
     data = yaml.load(f, Loader=yaml.FullLoader)
@@ -119,6 +116,9 @@ def sitemap():
 @htmlmin.exempt
 @cache(None)
 def stream():
+    from shelljob import proc
+    import eventlet
+    eventlet.monkey_patch()
     g = proc.Group()
     p = g.run( [ "bash", "-c", "ps fax" ] )
 
