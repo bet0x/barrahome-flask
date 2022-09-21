@@ -17,9 +17,7 @@ from website import app
 from flask_wtf import FlaskForm
 from wtforms import TextField, BooleanField, TextAreaField, SubmitField
 from flask_htmlmin import HTMLMIN
-
 from shelljob import proc
-
 import eventlet
 eventlet.monkey_patch()
 
