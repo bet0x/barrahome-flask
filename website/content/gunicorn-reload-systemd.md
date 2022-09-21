@@ -28,13 +28,13 @@ WantedBy=multi-user.target
 [alberto@barrahome barrahome-flask]$
 ```
 Luego ejecutamos:
-```
+```bash
 [alberto@barrahome barrahome-flask]$ sudo systemctl daemon-reload
 [alberto@barrahome barrahome-flask]$ sudo systemctl reload barrahome
 ```
 
 Verificamos si se ejecuto:
-```
+```bash
 [alberto@barrahome barrahome-flask]$ sudo systemctl status barrahome
 ● barrahome.service - Barrahome web application
    Loaded: loaded (/etc/systemd/system/barrahome.service; enabled; vendor preset: disabled)
