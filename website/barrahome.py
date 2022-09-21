@@ -130,7 +130,7 @@ def stream():
             for proc, line in lines:
                 yield "data:" + line + "\n\n"
 
-    return flask.Response( read_process(), mimetype= 'text/event-stream' )
+    return Response( read_process(), mimetype= 'text/event-stream' )
 
 @app.route('/tldr')
 @htmlmin.exempt
