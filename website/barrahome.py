@@ -134,7 +134,7 @@ def stream():
 @htmlmin.exempt
 @cache(None)
 def tldr():
-    return send_file('tldr.html', title="Too long; didn't read")
+    return send_file('tldr.html')
 
 @app.route('/legal')
 @htmlmin.exempt
