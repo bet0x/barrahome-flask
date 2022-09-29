@@ -75,4 +75,4 @@ print "</pre>";
 
 Algo importante, se puede aplicar **+ExecCGI** directamente a **/home/alberto/public_html** y evitar tener que utilizar **cgi-bin**. 
 
-NOTA: Quiero destacar que utilizar **SymLinksIfOwnerMatch** en el caso de ser requerido ayuda también a prevenir ataques del tipo **[Symlink Attack](https://capec.mitre.org/data/definitions/132.html)**. En PHP esto se previne mediante la configuración del valor **[open_basedir](https://www.php.net/manual/en/ini.core.php)**. 
+**NOTA:** Quiero destacar que utilizar **SymLinksIfOwnerMatch** en el caso de ser requerido ayuda también a prevenir ataques del tipo **[Symlink Attack](https://capec.mitre.org/data/definitions/132.html)**. En PHP esto se previne mediante la configuración del valor **[open_basedir](https://www.php.net/manual/en/ini.core.php)**. 
