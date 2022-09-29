@@ -4,7 +4,9 @@ tags: apache, execcgi, fpm
 summary: Una simple receta con notas de como se debe configurar un Virtual Host con Apache para que ejecute CGIs y PHP.
 author: Alberto Ferrer
 
-Esta configuración de Apache se realizo bajo Ubuntu 22.04 con el modulo de **proxy_fcgi**, **setenvif** y **cgid**. El modulo **cgid** se habilita cuando nuestro MPM es **event** mientras que cuando ejecutamos **prefork** el modulo a utilizar es **cgi**. _En Ubuntu se utiliza a2enmod cgi{d}_ dependiendo del MPM a utilizar.
+Esta configuración de Apache se realizo bajo Ubuntu 22.04 con el modulo de **proxy_fcgi**, **setenvif** y **cgid**. El modulo **cgid** se habilita cuando nuestro MPM es **event** mientras que cuando ejecutamos **prefork** el modulo a utilizar es **cgi**. 
+
+_En Ubuntu se habilita o deshabilita el modulo mediante el comando:_ **a2enmod cgi{d}** dependiendo del MPM a utilizar. 
 
 Estos módulos se deben habilitar si nuestro MPM es **event**, esto se puede verificar mediante:
 
