@@ -22,7 +22,7 @@ La configuración para Apache sera la siguiente:
     CustomLog ${APACHE_LOG_DIR}/access-localhost.barrahome.org.log combined
 
 <Directory />
-   Options FollowSymLinks
+   Options -FollowSymLinks +SymLinksIfOwnerMatch
    AllowOverride All
    Require all granted
 </Directory>
@@ -73,4 +73,6 @@ foreach $key (sort keys(%ENV)){
 print "</pre>";
 ```
 
-Algo importante, se puede aplicar **+ExecCGI** directamente a **/home/alberto/public_html** y evitar tener que utilizar **cgi-bin**.
+Algo importante, se puede aplicar **+ExecCGI** directamente a **/home/alberto/public_html** y evitar tener que utilizar **cgi-bin**. 
+
+NOTA: Quiero destacar que utilizar **SymLinksIfOwnerMatch** en el caso de ser requerido ayuda tambien a prevenir ataques del tipo **[Symlink Attack](https://capec.mitre.org/data/definitions/132.html)**. En PHP esto se previne mediante la configuracion del valor **[open_basedir](https://www.php.net/manual/en/ini.core.php)**. 
