@@ -4,13 +4,13 @@ tags: apache, execcgi, fpm
 summary: Una simple receta con notas de como se debe configurar un Virtual Host con Apache para que ejecute CGIs y PHP.
 author: Alberto Ferrer
 
-Esta configuracion de Apache se realizo bajo Ubuntu 22.04 con el modulo de proxy_fcgi, setenvif y cgid. Estos modulos se deben habilitar si nuestro MPM es **event**, esto se puede verificar mediante:
+Esta configuración de Apache se realizo bajo Ubuntu 22.04 con el modulo de proxy_fcgi, setenvif y cgid. Estos módulos se deben habilitar si nuestro MPM es **event**, esto se puede verificar mediante:
 
 ```bash
 sudo apachectl status |grep -i 'Server MPM:'
 ```
 
-La configuracion para Apache sera la siguiente:
+La configuración para Apache sera la siguiente:
 
 ```bash
 <VirtualHost *:80>
@@ -53,9 +53,9 @@ La configuracion para Apache sera la siguiente:
 </VirtualHost>
 ```
 
-Tengan en cuenta que estoy utilizando PHP-FPM con un pool dedicado **localhost.barrahome.org.sock**. Los permisos para /home y para /home/alberto son de ejecucion. 
+Tengan en cuenta que estoy utilizando PHP-FPM con un pool dedicado **localhost.barrahome.org.sock**. Los permisos para /home y para /home/alberto son de ejecución. 
 
-Aqui el script de Perl el cual he creado para la prueba:
+Aquí el script de Perl el cual he creado para la prueba:
 
 ```perl
 #!/usr/bin/perl
