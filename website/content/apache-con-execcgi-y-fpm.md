@@ -6,7 +6,7 @@ author: Alberto Ferrer
 
 Esta configuración de Apache se realizo bajo Ubuntu 22.04 con el modulo de **proxy_fcgi**, **setenvif** y **cgid**. El modulo **cgid** se habilita cuando nuestro MPM es **event** mientras que cuando ejecutamos **prefork** el modulo a utilizar es **cgi**. 
 
-_En Ubuntu se habilita o deshabilita el modulo mediante el comando:_ **a2enmod cgi{d}** dependiendo del MPM a utilizar. 
+_En Ubuntu se habilita o deshabilita el modulo mediante el comando:_ **a2enmod cgi{d}** dependiendo del MPM a utilizar. Para conocer mas sobre estos comandos **a2enmod/a2dismod** pueden visitar el siguiente [enlace](https://manpages.ubuntu.com/manpages/bionic/man8/a2enmod.8.html). Para PHP-FPM puede que deban ejecutar **a2enconf** y pueden leer mas sobre esto en este otro [enlace](https://manpages.ubuntu.com/manpages/trusty/man8/a2enconf.8.html).
 
 Estos módulos se deben habilitar si nuestro MPM es **event**, esto se puede verificar mediante:
 
