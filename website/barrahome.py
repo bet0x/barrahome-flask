@@ -209,7 +209,7 @@ def blog_post(post_title):
 
 
 def parse_markdown_post(md_path):
-    with open(md_path, 'rU') as f:
+    with open(md_path, 'rU', encoding="utf8") as f:
         markdown = f.read()
     re_pat = re.compile(r'title: (?P<title>[^\n]*)\sdate: (?P<date>\d{4}-\d{2}-\d{2})\s'
                         r'tags: (?P<tags>[^\n]*)\ssummary: (?P<summary>[^\n]*)\sauthor: (?P<author>[^\n]*)\s')
