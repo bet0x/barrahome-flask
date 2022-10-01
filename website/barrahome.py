@@ -25,6 +25,10 @@ app.secret_key = 'secretKey'
 app.config['MINIFY_HTML'] = True
 htmlmin = HTMLMIN(app)
 
+from flask_wtf.csrf import CSRFProtect
+csrf = CSRFProtect()
+csrf.init_app(app)
+
 class Post:
     def __init__(self, title, date, tags, summary, author, href, content_md):
         self.title = title
