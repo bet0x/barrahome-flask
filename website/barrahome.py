@@ -17,7 +17,6 @@ from website import app
 from flask_wtf import FlaskForm
 from wtforms import TextField, BooleanField, TextAreaField, SubmitField
 from flask_htmlmin import HTMLMIN
-from flask_recaptcha import ReCaptcha 
 
 with open('config/website.yaml') as f:    
     data = yaml.load(f, Loader=yaml.FullLoader)
@@ -25,10 +24,6 @@ with open('config/website.yaml') as f:
 app.secret_key = 'secretKey'
 app.config['MINIFY_HTML'] = True
 htmlmin = HTMLMIN(app)
-
-app.config['RECAPTCHA_SITE_KEY'] = 'YOUR_RECAPTCHA_SITE_KEY'
-app.config['RECAPTCHA_SECRET_KEY'] = 'YOUR_RECAPTCHA_SECRET_KEY'
-recaptcha = ReCaptcha(app)
 
 from flask_wtf.csrf import CSRFProtect
 csrf = CSRFProtect()
@@ -141,15 +136,12 @@ def contact():
     # here, if the request type is a POST we get the data on contact
     #forms and save them else we return the contact forms html page
     if request.method == 'POST':
-        if recaptcha.verify():
-            email = request.form["email"]
-            name =  request.form["name"]
-            message = request.form["message"]
-            res = pd.DataFrame({'email':email,'name':name,'message':message}, index=[0])
-            res.to_csv('./contact.csv', mode='a', header=False)
-            return render_template('contact.html', title="Contacto", form=form, resp="Solicitud de contacto enviada")
-        else:    
-        return render_template('contact.html', title="Contacto", form=form)
+        email = request.form["email"]
+        name =  request.form["name"]
+        message = request.form["message"]
+        res = pd.DataFrame({'email':email,'name':name,'message':message}, index=[0])
+        res.to_csv('./contact.csv', mode='a', header=False)
+        return render_template('contact.html', title="Contacto", form=form, resp="Solicitud de contacto enviada")
     else:
         return render_template('contact.html', title="Contacto", form=form)
 
