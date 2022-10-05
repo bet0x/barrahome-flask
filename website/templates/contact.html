@@ -1,4 +1,9 @@
 {% extends "layout.html" %} {% block content %}
+<!-- Scripts Section -->
+{% block scripts %}   
+<!-- reCaptcha Integration -->
+<script src='https://www.google.com/recaptcha/api.js' async defer></script>
+{% endblock %}
 <section>
     <header>
         <h1>Sobre este blog:</h1>
@@ -28,9 +33,17 @@
           <textarea id="tarea" cols="30" rows="5" name="message"></textarea>
         </div>
         <div class="form-group">
+          <div class="recapture-box">
+            {% for error in form.recaptcha.errors %}
+                {{ error }}
+            {% endfor %}
+            {{ form.recaptcha }}
+        </div>
+        </div>        
+        <div class="form-group">
           <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
           <button class="btn btn-default" type="submit" role="button" name="submit" id="submit">Enviar</button>
-        </div>
+        </div>        
       </fieldset>
     </form>
 </section>

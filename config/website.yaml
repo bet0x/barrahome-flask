@@ -7,3 +7,7 @@ social:
     github  : bet0x
     twitter : bet0x
     email   : albertof@barrahome.org
+
+recaptcha:
+    public_key  : "6LedsloiAAAAACImyKj79ptjQ3TnDLByGt2qsFfP"
+    private_key : "6LedsloiAAAAAG1CUAK76lGnwnDDlTsv5rReOKeI"
