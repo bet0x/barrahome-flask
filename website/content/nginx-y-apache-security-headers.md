@@ -26,3 +26,5 @@ El equivalente para Apache seria utilizando algo como esto:
    Header set header-Name: Values
 <IfModule mod_headers.c>
 ```
+
+Pueden observar los resultados aplicados en este blog visitando el sidio de [Serpworx](https://www.serpworx.com/check-security-headers/?url=https%3A%2F%2Fwww.barrahome.org%2F).
