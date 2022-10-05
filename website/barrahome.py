@@ -15,22 +15,17 @@ from flask import render_template, send_from_directory, make_response, Response,
 from wsgiref.handlers import format_date_time
 from website import app
 from flask_wtf import FlaskForm
-from flask_wtf.recaptcha import RecaptchaField
 from wtforms import TextField, BooleanField, TextAreaField, SubmitField
 from flask_htmlmin import HTMLMIN
 
-# This needs to be moved, rewritten and more. 
-
 with open('config/website.yaml') as f:    
     data = yaml.load(f, Loader=yaml.FullLoader)
-app.config['RECAPTCHA_PUBLIC_KEY']  = data['recaptcha']['public_key']
-app.config['RECAPTCHA_PRIVATE_KEY'] = data['recaptcha']['private_key']
+
 app.secret_key = 'secretKey'
 app.config['MINIFY_HTML'] = True
 htmlmin = HTMLMIN(app)
 
 from flask_wtf.csrf import CSRFProtect
-
 csrf = CSRFProtect()
 csrf.init_app(app)
 
@@ -59,7 +54,6 @@ class ContactForm(FlaskForm):
     name = TextField("Name")
     message = TextAreaField("Message")
     submit = SubmitField("Send")
-    recaptcha = RecaptchaField()
 
 @app.context_processor
 def inject_now():
