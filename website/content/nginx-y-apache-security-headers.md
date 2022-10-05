@@ -4,7 +4,7 @@ tags: apache, nginx, security, headers
 summary: Security Headers para Apache y Nginx actualizados, una breve reseña de los mismos. 
 author: Alberto Ferrer
 
-Este breve articulo no es mas que una nota o cheatsheet de los security headers a utilizar y requeridos en su mayoria. Si desean leer sobre el tema pueden seguir el [siguiente enlace.](https://owasp.org/www-project-secure-headers/)
+Este breve articulo no es mas que una nota o cheatsheet de los security headers a utilizar y requeridos en su mayoría. Si desean leer sobre el tema pueden seguir el [siguiente enlace.](https://owasp.org/www-project-secure-headers/)
 
 ```bash
 add_header X-Frame-Options "SAMEORIGIN" always;
