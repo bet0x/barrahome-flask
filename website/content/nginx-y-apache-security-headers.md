@@ -1,4 +1,4 @@
-title: Nginx y Apache Security Headers.md
+title: Nginx y Apache Security Headers
 date: 2022-10-05
 tags: apache, nginx, security, headers
 summary: Security Headers para Apache y Nginx actualizados, una breve reseña de los mismos. 
